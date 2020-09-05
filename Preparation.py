@@ -1,5 +1,5 @@
 #Preparation
-#_________________Make LDA model_________________
+#_____________________Make LDA model_______________________
 from gensim import corpora, models, similarities
 def ldaTest(file):
     raw_text = open(file).readlines()
