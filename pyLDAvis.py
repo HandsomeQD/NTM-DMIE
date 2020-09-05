@@ -24,7 +24,7 @@ def remove(text):
 #预处理Amazon Clothing_Shoes_and_Jewelry数据集 代入LDA主题模型检验分类效果
 from gensim import corpora, models, similarities
 from gensim.models import CoherenceModel
-df = getDF('/Users/xiaoqiulu/Desktop/coling/reviews_Clothing_Shoes_and_Jewelry_5.json.gz')
+df = getDF('reviews_Clothing_Shoes_and_Jewelry_5.json.gz')
 raw_text = df["reviewText"].tolist() #total texts：278677
 file = open("amazon_clothing.txt","w")#所有原始review写入txt文件
 for x in raw_text:
@@ -32,7 +32,7 @@ for x in raw_text:
 raw_text = [x.lower() for x in raw_text]#英文单词全部小写化
 raw_text = [remove(x) for x in raw_text]#去除字符串中的数字及标点符号
 tokenized_text = [sentence.split(" ") for sentence in raw_text]#按照空格分词
-stopwords = [line.strip() for line in open('/Users/xiaoqiulu/Desktop/coling/stopwords.txt',encoding='UTF-8').readlines()]#停用词
+stopwords = [line.strip() for line in open('stopwords.txt',encoding='UTF-8').readlines()]#停用词
 processed_text = []
 for sentence in tokenized_text:
     sentence = [word for word in sentence if word not in stopwords]
