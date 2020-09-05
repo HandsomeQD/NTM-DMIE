@@ -84,6 +84,7 @@ class InfomaxTextVAE(nn.Module):
         global_score = self.globalDiscriminator(z)
         local_score = self.localDiscriminator(z)
         renconst_z = self.decode(z)
+        return z,global_score,local_score,reconst_z
 
 model=InfomaxTextVAE(embed_size,hidden_size,output_size,num_layers,latent_dim,categorical_dim,word_length,bidirectional=True)
 optimizer = optim.Adam(model.parameters(), lr=learning_rate)
